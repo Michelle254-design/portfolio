@@ -1,0 +1,308 @@
+```css
+/* ==============================
+   GENERAL STYLES
+============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #030712;
+  color: white;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* ==============================
+   HERO SECTION
+============================== */
+
+.hero {
+  background: linear-gradient(
+    to right,
+    #312e81,
+    #581c87,
+    #111827
+  );
+
+  padding: 100px 0;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image {
+  flex: 0 0 auto;
+}
+
+.subtitle {
+  color: #a5b4fc;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 20px 0;
+  line-height: 1.1;
+}
+
+.description {
+  color: #d1d5db;
+  line-height: 1.8;
+  max-width: 600px;
+  font-size: 17px;
+}
+
+
+/* ==============================
+   PROFILE IMAGE
+============================== */
+
+.profile-image {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #6366f1;
+  display: block;
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.buttons {
+  margin-top: 30px;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.button-primary {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+}
+
+.button-primary:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  background: transparent;
+  border: 1px solid #9ca3af;
+  color: white;
+}
+
+.button-secondary:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+
+/* ==============================
+   SECTIONS
+============================== */
+
+.section {
+  padding: 80px 0;
+}
+
+.dark-section {
+  background-color: #111827;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 40px;
+  color: #818cf8;
+}
+
+h3 {
+  color: #c7d2fe;
+}
+
+
+/* ==============================
+   CARDS
+============================== */
+
+.card {
+  background-color: #1f2937;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card p {
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+
+/* ==============================
+   SKILLS
+============================== */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  );
+  gap: 20px;
+}
+
+.skills-grid ul {
+  padding-left: 20px;
+}
+
+.skills-grid li {
+  margin-bottom: 10px;
+  color: #d1d5db;
+}
+
+
+/* ==============================
+   PROJECTS
+============================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+  gap: 20px;
+}
+
+.project-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+
+/* ==============================
+   CONTACT
+============================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 20px;
+}
+
+.contact-grid a {
+  color: #a5b4fc;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-grid a:hover {
+  text-decoration: underline;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #1f2937;
+  color: #9ca3af;
+}
+
+
+/* ==============================
+   MOBILE RESPONSIVENESS
+============================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    margin-right: 0;
+    width: 200px;
+    text-align: center;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+}
+```
