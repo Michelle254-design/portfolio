@@ -1,203 +1,443 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Michelle Mwikali's portfolio showcasing web design and software development projects.">
   <title>Michelle Mwikali | Portfolio</title>
 
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: #111827;
+      --purple: #a78bfa;
+      --text: #f8fafc;
+      --muted: #a5b0c2;
+      --border: rgba(255,255,255,.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,11,20,.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .logo span { color: var(--purple); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--purple); }
+
+    .hero {
+      padding: 95px 0 80px;
+      background:
+        radial-gradient(ellipse at 15% 15%, #312e8140, transparent 45%),
+        radial-gradient(ellipse at 85% 45%, #7e22ce25, transparent 45%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: .78rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      line-height: 1.08;
+      margin: 18px 0;
+      letter-spacing: -2px;
+    }
+
+    .hero p, .section-intro {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .hero-image {
+      width: 230px;
+      height: 280px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 25px;
+      border: 2px solid #a78bfa80;
+      box-shadow: 0 20px 60px #0008;
+      justify-self: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid var(--purple);
+      border-radius: 9px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn.primary {
+      background: var(--purple);
+      color: #100b20;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px #a78bfa25;
+    }
+
+    section { padding: 75px 0; }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .section-intro { margin-bottom: 30px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .skill {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: #ddd6fe;
+      padding: 9px 15px;
+      border-radius: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #151c2d, #0d1220);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 27px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #a78bfa90;
+    }
+
+    .project-label {
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .75rem;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      margin: 10px 0;
+    }
+
+    .card p { color: var(--muted); }
+
+    .tags {
+      font-size: .86rem;
+      margin-top: 16px;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .project-links a {
+      color: var(--purple);
+      border: 1px solid #a78bfa65;
+      padding: 8px 12px;
+      border-radius: 7px;
+      font-size: .9rem;
+    }
+
+    .project-links a:hover {
+      background: #a78bfa18;
+    }
+
+    .contact-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-inner {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links { gap: 14px; }
+
+      .hero { padding: 65px 0; }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-image {
+        grid-row: 1;
+        width: 170px;
+        height: 200px;
+      }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
-  <section class="hero" id="home">
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">MICHELLE<span>.</span></a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
     <div class="container hero-content">
-
-      <div class="hero-text">
-        <p class="subtitle">PORTFOLIO</p>
-
-        <h1>MICHELLE MWIKALI</h1>
-
-        <p class="description">
-          A passionate Computer Science professional with skills in
-          software development, databases, networking, web development,
-          graphic design, and technology support.
-        </p>
-
-        <div class="buttons">
-          <a href="Michelle-Mwikali-CV.pdf"
-             class="button-primary"
-             download>
-            Download CV
-          </a>
-
-          <a href="#contact" class="button-secondary">
-            Contact Me
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-image">
-        <img
-          src="shee.jpg"
-          alt="Michelle Mwikali"
-          class="profile-image"
-        />
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ABOUT SECTION -->
-  <section class="section" id="about">
-    <div class="container">
-
-      <h2>About Me</h2>
-
-      <div class="card">
+      <div>
+        <span class="eyebrow">My Portfolio</span>
+        <h1>MICHELLE<br>Mwikali.</h1>
         <p>
-          I am a motivated Computer Science professional with practical
-          experience in technology, web development, databases, networking,
-          and computer support. I enjoy using technology to solve problems,
-          create useful digital solutions, and learn new skills.
+          Passionate about creating useful digital experiences through
+          web design and software development. I enjoy solving problems
+          and building practical, user-friendly web applications.
+        </p>
+        <div class="buttons">
+          <!-- Upload your CV to the repository and name it cv.pdf -->
+          <a class="btn primary" href="cv.pdf" download>Download CV</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <img
+        src="shee.jpg"
+        alt="Michelle Mwikali"
+        class="hero-image"
+      >
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-intro">
+          I am a Computer Science professional in development with an
+          interest in web design, software development, databases,
+          networking and cybersecurity. My goal is to create digital
+          solutions that are useful, accessible and easy to use.
         </p>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-
-  <!-- SKILLS SECTION -->
-  <section class="section dark-section" id="skills">
-    <div class="container">
-
-      <h2>Skills</h2>
-
-      <div class="skills-grid">
-
-        <div class="card">
-          <h3>Programming & Web</h3>
-          <ul>
-            <li>HTML & CSS</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>C++</li>
-            <li>Java</li>
-            <li>Web Design</li>
-          </ul>
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <p class="section-intro">
+          Technologies and areas I have been learning and working with.
+        </p>
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Web Design</span>
+          <span class="skill">Python</span>
+          <span class="skill">C++</span>
+          <span class="skill">SQL & Databases</span>
+          <span class="skill">Networking</span>
+          <span class="skill">Cybersecurity Fundamentals</span>
+          <span class="skill">Graphic Design</span>
+          <span class="skill">Troubleshooting</span>
         </div>
-
-        <div class="card">
-          <h3>ICT & Technology</h3>
-          <ul>
-            <li>Computer Troubleshooting</li>
-            <li>Networking</li>
-            <li>Network Configuration</li>
-            <li>Hardware & Software Support</li>
-            <li>Database Management</li>
-            <li>MS Office</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Creative & Professional</h3>
-          <ul>
-            <li>Graphic Design</li>
-            <li>Document Formatting</li>
-            <li>Problem Solving</li>
-            <li>Communication</li>
-            <li>Teamwork</li>
-            <li>Data Handling</li>
-          </ul>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
+    <section id="projects">
+      <div class="container">
+        <span class="eyebrow">Selected Work</span>
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-intro">
+          Practical projects demonstrating my interest in designing
+          and developing digital solutions.
+        </p>
 
-  <!-- PROJECTS SECTION -->
-  <section class="section" id="projects">
-    <div class="container">
+        <div class="projects-grid">
 
-      <h2>Featured Projects</h2>
+          <!-- NEW SALON BOOKING PROJECT -->
+          <article class="card">
+            <span class="project-label">Web Application</span>
+            <h3>Salon Booking System</h3>
+            <p>
+              A responsive salon appointment booking application that
+              allows customers to book appointments and check available
+              time slots. Includes Supabase database integration and
+              an administrative dashboard for managing bookings.
+            </p>
+            <p class="tags">
+              HTML · CSS · JavaScript · Supabase
+            </p>
+            <div class="project-links">
+              <a
+                href="https://michelle254-design.github.io/salon-booking-system/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Live Demo ↗</a>
+              <a
+                href="https://github.com/michelle254-design/salon-booking-system"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Source Code ↗</a>
+            </div>
+          </article>
 
-    
-<div class="card">
-  <h3>Salon Booking System</h3>
-  <p>
-    A responsive salon appointment booking application
-    built with HTML, CSS, JavaScript and Supabase.
-    Features online appointments, available time slots,
-    database integration and an admin dashboard.
-  </p>
-  <a
-    href="https://michelle254-design.github.io/salon-booking-system/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Live Demo
-  </a>
-  <a
-    href="https://github.com/michelle254-design/salon-booking-system"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Source Code
-  </a>
-</div>
+          <!-- Keep your existing projects here.
+               Copy their old project cards into this grid. -->
+
+          <article class="card">
+            <span class="project-label">Web Design</span>
+            <h3>Personal Portfolio Website</h3>
+            <p>
+              A personal website showcasing my background, skills,
+              and development projects in a professional layout.
+            </p>
+            <p class="tags">HTML · CSS · Responsive Design</p>
+            <div class="project-links">
+              <a href="https://michelle254-design.github.io/portfolio/">
+                View Portfolio ↗
+              </a>
+            </div>
+          </article>
+
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- CONTACT SECTION -->
-  <section class="section dark-section" id="contact">
-    <div class="container">
-
-      <h2>Contact Me</h2>
-
-      <div class="contact-grid">
-
-        <div class="card">
-          <h3>Email</h3>
-          <p>
-            <a href="mailto:michellemwikalimusembi@gmail.com">
-              michellemwikalimusembi@gmail.com
-            </a>
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <span class="eyebrow">Get in Touch</span>
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-intro">
+            Interested in working together or discussing a project?
+            Feel free to reach out.
           </p>
+          <!-- Replace the example address with your real email. -->
+          <a class="btn primary"
+             href="mailto:YOUR-EMAIL@example.com">
+            Email Me
+          </a>
         </div>
-
-
-        <div class="card">
-          <h3>Phone</h3>
-          <p>
-            <a href="tel:+254792316902">
-              +254 792 316 902
-            </a>
-          </p>
-        </div>
-
-
-        <div class="card">
-          <h3>Location</h3>
-          <p>Nairobi, Kenya</p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-
-  <!-- FOOTER -->
   <footer>
-    <p>© 2026 Michelle Mwikali. All Rights Reserved.</p>
+    <div class="container">
+      © <span id="year"></span> Michelle Mwikali. All rights reserved.
+    </div>
   </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
